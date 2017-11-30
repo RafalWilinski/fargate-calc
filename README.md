@@ -26,3 +26,7 @@ For a detailed explanation on how things work, check out the [guide](http://vuej
 
 Use https://github.com/klaemo/s3-website
 
+```bash
+npm run build && s3-website deploy ./dist
+```
+
