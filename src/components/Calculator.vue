@@ -105,8 +105,8 @@ export default {
       return getMemoryOptions(this.vcpu);
     },
     totalPrice: function() { // eslint-disable-line
-      return (this.hours * this.vcpu * vcpuHourPrice)
-        + (this.hours * this.memory * memoryGbHourPrice);
+      return ((this.hours * this.vcpu * vcpuHourPrice)
+        + (this.hours * this.memory * memoryGbHourPrice)).toFixed(3);
     },
   },
   methods: {
