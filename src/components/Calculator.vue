@@ -59,12 +59,12 @@ const getMemoryOptions = (vcpu) => {
   } else if (vcpu === 0.5) {
     return mapSequenceToSelections([1, 2, 3]);
   } else if (vcpu === 1) {
-    return mapSequenceToSelections([...Array(6).keys()].map(x => x + 2));
+    return mapSequenceToSelections([...Array(7).keys()].map(x => x + 2));
   } else if (vcpu === 2) {
-    return mapSequenceToSelections([...Array(12).keys()].map(x => x + 4));
+    return mapSequenceToSelections([...Array(13).keys()].map(x => x + 4));
   }
 
-  return mapSequenceToSelections([...Array(22).keys()].map(x => x + 8));
+  return mapSequenceToSelections([...Array(23).keys()].map(x => x + 8));
 };
 
 export default {
