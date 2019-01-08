@@ -45,8 +45,8 @@
 </template>
 
 <script>
-const vcpuHourPrice = 0.0506;
-const memoryGbHourPrice = 0.0127;
+const vcpuHourPrice = 0.04048;
+const memoryGbHourPrice = 0.004445;
 
 const mapSequenceToSelections = array => array.map(x => ({
   value: x,
