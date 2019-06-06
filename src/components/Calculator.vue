@@ -110,7 +110,7 @@ export default {
       time: 'hours',
       hours: 1,
       region: 'us-east-1',
-      regions: regions,
+      regions,
     };
   },
   computed: {
