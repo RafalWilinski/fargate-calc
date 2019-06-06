@@ -13,7 +13,7 @@
 
     <div v-if="time === 'hours'" style="display: inline">
       x 
-      <el-input-number v-model="hours" controls-position="right" :min="1" :max="730"></el-input-number>
+      <el-input-number v-model="hours" controls-position="right" :min="0" :max="730"></el-input-number>
     </div>
 
     x
