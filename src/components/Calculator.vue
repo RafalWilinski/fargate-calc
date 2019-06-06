@@ -40,13 +40,24 @@
 
     =
 
-    <h2>${{ totalPrice }}/month</h2>
+    <h2>${{ totalPrice.toFixed(3) }} USD</h2>
+
+    <h4>${{ cpuPrice.toFixed(3) }} on CPU ({{ (cpuPrice / totalPrice * 100).toFixed(0) }}%)</h4>
+    <h4>${{ memoryPrice.toFixed(3) }} on RAM ({{ (memoryPrice / totalPrice * 100).toFixed(0) }}%)</h4>
+
+    <el-select v-model="region" placeholder="Select">
+      <el-option
+              v-for="item in regions"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value">
+      </el-option>
+    </el-select>
   </div>
 </template>
 
 <script>
-const vcpuHourPrice = 0.04048;
-const memoryGbHourPrice = 0.004445;
+import { pricing, regions } from '../pricing';
 
 const mapSequenceToSelections = array => array.map(x => ({
   value: x,
@@ -98,15 +109,31 @@ export default {
       memory: 0.5,
       time: 'hours',
       hours: 1,
+      region: 'us-east-1',
+      regions: regions,
     };
   },
   computed: {
     memoryOptions: function() { // eslint-disable-line
       return getMemoryOptions(this.vcpu);
     },
+    regionPricing: function() { // eslint-disable-line
+      return pricing[this.region];
+    },
+    cpuPerHour: function() { // eslint-disable-line
+      return this.regionPricing.vCpuPerHour;
+    },
+    memoryPerHour: function() { // eslint-disable-line
+      return this.regionPricing.memoryGbPerHour;
+    },
+    cpuPrice: function() { // eslint-disable-line
+      return this.hours * this.vcpu * this.cpuPerHour;
+    },
+    memoryPrice: function() { // eslint-disable-line
+      return this.hours * this.memory * this.memoryPerHour;
+    },
     totalPrice: function() { // eslint-disable-line
-      return ((this.hours * this.vcpu * vcpuHourPrice)
-        + (this.hours * this.memory * memoryGbHourPrice)).toFixed(3);
+      return this.cpuPrice + this.memoryPrice;
     },
   },
   methods: {
