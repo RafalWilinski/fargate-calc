@@ -1,5 +1,9 @@
 export const regions = [
   {
+    value: 'sa-east-1',
+    label: 'Sao Paulo, sa-east-1',
+  },
+  {
     value: 'us-east-1',
     label: 'N. Virginia, us-east-1',
   },
@@ -54,9 +58,14 @@ export const regions = [
 ];
 
 export const pricing = {
+
   'us-east-1': {
     vCpuPerHour: 0.04048,
     memoryGbPerHour: 0.004445,
+  },
+  'sa-east-1': {
+    vCpuPerHour: 0.0696,
+    memoryGbPerHour: 0.0076,
   },
   'us-east-2': {
     vCpuPerHour: 0.04048,
